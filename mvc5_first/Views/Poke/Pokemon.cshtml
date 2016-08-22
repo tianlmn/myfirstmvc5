@@ -1,0 +1,53 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>口袋妖怪打击面计算公式</title>
+    <link rel="stylesheet" type="text/css" href="/Content/bootstrap.min.css" />
+    <link href="/Content/app.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-5 col-md-offset-1">
+            <img src="/Content/resource/prop18.png" alt="HelloPokemon" title="HelloPokemon" />
+            <div>
+                <span class="mark">参数a，b表示精灵的两个特性，如果是单属性精灵可以只需要输入a，默认计算地属性</span>
+                <span class="mark">参数c表示计算几种攻击属性组合，默认为4，复制黏贴到地址栏：</span>
+                <span class="mark-important">?a=水&b=地&c=4</span>
+                <span class="mark">计算规则：对每个的防御属性，在c种攻击属性中取大于1的最大伤害倍率，分别计算完18个倍率后相加，按照结果的最大值获取前30的攻击属性组合</span>
+                <span class="mark">本属性加成倍率1.5，攻击属性相克倍率为2，防御属性相克为0.5，免疫为0</span>
+                <span class="mark">几乎没测过，感觉没啥bug</span>
+            </div>
+
+        </div>
+        <div class="col-md-5 content">
+            @using mvc5_first.Models
+            @model PokeEntity
+            <table>
+                @if (Model != null && Model.SortedList != null)
+                {
+                    foreach (PokeAttrType[] item in Model.SortedList)
+                    {
+                        <tr>
+                            @foreach (PokeAttrType i in item)
+                            {
+                                <td>
+                                    @i.ToString()
+                                </td>
+                            }
+
+                        </tr>
+                    }
+                }
+            </table>
+
+        </div>
+    </div>
+
+</body>
+</html>
