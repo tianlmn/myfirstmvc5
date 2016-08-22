@@ -7,31 +7,16 @@ namespace mvc5_first.Models
 {
     public class PokeEntity
     {
-        public List<PokeAttrType[]> SortedList { get; set; }
+        public List<PokeCombEntity> SortedList { get; set; }
 
     }
 
-    //public enum PokeAttrType
-    //{
-    //    Putong,
-    //    Huo,
-    //    Shui,
-    //    Dian,
-    //    Cao,
-    //    Bing,
-    //    Gedou,
-    //    Du,
-    //    Dimian,
-    //    Feixing,
-    //    Chaoneng,
-    //    Chong,
-    //    Yan,
-    //    Gui,
-    //    Long,
-    //    Gang,
-    //    E,
-    //    Xian
-    //}
+    public class PokeCombEntity
+    {
+        public PokeAttrType[] SortList { get; set; }
+
+        public double Score { get; set; }
+    }
 
     public enum PokeAttrType
     {

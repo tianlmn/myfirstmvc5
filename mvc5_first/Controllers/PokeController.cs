@@ -17,7 +17,7 @@ namespace mvc5_first.Controllers
         {
             PokeAttrType a=PokeAttrType.地;
             PokeAttrType b;
-            int c = 4;
+            int c = 3;
             PokeEntity pokeEntity = new PokeEntity();
             if (Request["a"] != null)
             {
@@ -50,7 +50,7 @@ namespace mvc5_first.Controllers
         {
             PropA = p1;
             PropB = p2;
-            CombNum = combNum;
+            CombNum = combNum>6?6:combNum;
         }
 
 
@@ -61,7 +61,14 @@ namespace mvc5_first.Controllers
             List<PokeAttrType[]> combList = CombAlgorithm<PokeAttrType>.GetCombination(attrList, CombNum);
 
             combList.Sort(CompareByPokeAttack);
-            pokeEntity.SortedList = combList.GetRange(0, 30);
+            var temp = combList.GetRange(0, 40);
+
+            pokeEntity.SortedList = (from t in temp
+                select new PokeCombEntity()
+                {
+                    Score = GetTotalScore(t),
+                    SortList = t
+                }).ToList();
             return pokeEntity;
         }
 
@@ -124,24 +131,11 @@ namespace mvc5_first.Controllers
 
         private double GetScoreValue(double score)
         {
-            return score;
-            
-            if (score <= 1)
+            if (score <= 1.5)
             {
                 return 0;
             }
-            if (score <= 1.5)
-            {
-                return 1;
-            }
-            if (score <= 2)
-            {
-                return 1.5;
-            }
-            if (score <= 1.5)
-            {
-                return 2;
-            }
+            return score;
         }
 
         
