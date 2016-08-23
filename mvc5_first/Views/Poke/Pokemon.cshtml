@@ -11,9 +11,9 @@
     <link rel="stylesheet" type="text/css" href="Content/bootstrap.min.css" />
     <link href="Content/app.css" rel="stylesheet" />
 </head>
-<body>
+<body class="mainbody">
     <div class="row">
-        <div class="col-md-5 col-md-offset-1 col-sm-12">
+        <div class="col-md-5 col-sm-12">
             <div>
                 <span class="mark">a,b:普,火,水,电,草,冰,斗,毒,地,飞,超,虫,岩,鬼,龙,钢,恶,仙</span>
                 <span class="mark">c:1,2,3,4,5,6</span>
@@ -28,41 +28,48 @@
             <img src="Content/resource/xiangke.png" alt="HelloPokemon" title="HelloPokemon" class="img-responsive center-block" />
 
         </div>
-        <div class="col-md-5 content col-sm-12">
+        <div class="col-md-6 content col-sm-12">
             @using mvc5_first.Models
             @model PokeEntity
             <table>
                 <tr>
                     <th>技能组合</th>
-                    <th>打击面得分</th>
-                    <th>一般属性[1,1.5]</th>
-                    <th>无力属性[0,1)</th>
+                    <th>得分</th>
+                    <th>无力属性[0,1]</th>
+                    <th>一般属性[1.5,1.5]</th>
+                    <th>优势属性[2,3]</th>
                 </tr>
                 @if (Model != null && Model.SortedList != null)
                 {
                     foreach (var item in Model.SortedList)
                     {
                         <tr>
-                            
-                            
+
+
                             <td>
                                 @foreach (PokeAttrType i in item.SortList)
                                 {
                                     @i.ToString()
                                 }
                             </td>
-                            
+
                             <td>
                                 @item.Score
                             </td>
                             <td>
-                                @foreach (PokeAttrType i in item.WeakList)
+                                @foreach (PokeAttrType i in item.List_100)
                                 {
                                     @i.ToString()
                                 }
                             </td>
                             <td>
-                                @foreach (PokeAttrType i in item.VeryWeakList)
+                                @foreach (PokeAttrType i in item.List_150)
+                                {
+                                    @i.ToString()
+                                }
+                            </td>
+                            <td>
+                                @foreach (PokeAttrType i in item.List_300)
                                 {
                                     @i.ToString()
                                 }

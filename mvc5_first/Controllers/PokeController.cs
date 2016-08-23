@@ -75,8 +75,9 @@ namespace mvc5_first.Controllers
         private void GetWeakList(PokeAttrType[] skills, List<PokeCombEntity> sortList)
         {
             var entity = new PokeCombEntity();
-            var weakList = new List<PokeAttrType>();
-            var veryWeakList = new List<PokeAttrType>();
+            var list100 = new List<PokeAttrType>();
+            var list150 = new List<PokeAttrType>();
+            var list300 = new List<PokeAttrType>();
             double totalScore = 0;
             for (int i = 0; i < AttrCount; i++)
             {
@@ -89,25 +90,31 @@ namespace mvc5_first.Controllers
                     {
                         s *= Benxi;
                     }
-                    double temp = GetScoreValue(XiangkeMatrix[xline, i] * s);
+                    double temp = XiangkeMatrix[xline, i] * s;
                     score = temp > score ? temp : score;
                 }
-                totalScore += score;
-                if (score < 1)
+                totalScore += (score>1.5?score:0);
+                if (score <= 1)
                 {
                     var t = (PokeAttrType) i;
-                    veryWeakList.Add(t);
+                    list100.Add(t);
                 }
-                else if (score >= 1 && score <= 1.5)
+                else if (score <= 1.5)
                 {
                     var t = (PokeAttrType)i;
-                    weakList.Add(t);
+                    list150.Add(t);
+                }
+                else if (score <= 3)
+                {
+                    var t = (PokeAttrType)i;
+                    list300.Add(t);
                 }
 
             }
             entity.SortList = skills;
-            entity.WeakList = weakList;
-            entity.VeryWeakList = veryWeakList;
+            entity.List_100 = list100;
+            entity.List_150 = list150;
+            entity.List_300 = list300;
             entity.Score = totalScore;
             sortList.Add(entity);
         }

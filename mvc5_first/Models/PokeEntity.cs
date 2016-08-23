@@ -15,9 +15,13 @@ namespace mvc5_first.Models
     {
         public PokeAttrType[] SortList { get; set; }
 
-        public List<PokeAttrType> WeakList { get; set; }
+        public List<PokeAttrType> List_100 { get; set; }
 
-        public List<PokeAttrType> VeryWeakList { get; set; }
+        public List<PokeAttrType> List_150 { get; set; }
+
+        public List<PokeAttrType> List_300 { get; set; }
+
+
 
         public double Score { get; set; }
     }

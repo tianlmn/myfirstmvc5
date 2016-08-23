@@ -18,9 +18,9 @@ namespace mvc5_first
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
-        protected void Application_BeginRequest(object sender, EventArgs e)
-        {
-            if (Context.Request.FilePath == "/") Context.RewritePath("Poke");
-        }
+        //protected void Application_BeginRequest(object sender, EventArgs e)
+        //{
+        //    if (Context.Request.FilePath == "/Utility/") Context.RewritePath("/Utility/Poke");
+        //}
     }
 }
