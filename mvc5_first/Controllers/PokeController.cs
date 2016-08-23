@@ -62,14 +62,54 @@ namespace mvc5_first.Controllers
 
             combList.Sort(CompareByPokeAttack);
             var temp = combList.GetRange(0, 40);
+            pokeEntity.SortedList = new List<PokeCombEntity>();
 
-            pokeEntity.SortedList = (from t in temp
-                select new PokeCombEntity()
-                {
-                    Score = GetTotalScore(t),
-                    SortList = t
-                }).ToList();
+            foreach (var skills in temp)
+            {
+                GetWeakList(skills, pokeEntity.SortedList);
+            }
+
             return pokeEntity;
+        }
+
+        private void GetWeakList(PokeAttrType[] skills, List<PokeCombEntity> sortList)
+        {
+            var entity = new PokeCombEntity();
+            var weakList = new List<PokeAttrType>();
+            var veryWeakList = new List<PokeAttrType>();
+            double totalScore = 0;
+            for (int i = 0; i < AttrCount; i++)
+            {
+                double score = 0;
+                foreach (PokeAttrType xSkill in skills)
+                {
+                    double s = 1;
+                    int xline = (int)xSkill;
+                    if (IsBenxi(xSkill))
+                    {
+                        s *= Benxi;
+                    }
+                    double temp = GetScoreValue(XiangkeMatrix[xline, i] * s);
+                    score = temp > score ? temp : score;
+                }
+                totalScore += score;
+                if (score < 1)
+                {
+                    var t = (PokeAttrType) i;
+                    veryWeakList.Add(t);
+                }
+                else if (score >= 1 && score <= 1.5)
+                {
+                    var t = (PokeAttrType)i;
+                    weakList.Add(t);
+                }
+
+            }
+            entity.SortList = skills;
+            entity.WeakList = weakList;
+            entity.VeryWeakList = veryWeakList;
+            entity.Score = totalScore;
+            sortList.Add(entity);
         }
 
         private PokeAttrType[] GetList()
