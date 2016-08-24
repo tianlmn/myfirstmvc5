@@ -1,9 +1,8 @@
 ﻿.mainbody{ padding: 0.5em 2em}
 
-.content{ border: 1px solid #2e8b57;padding: 5px;margin: 2px;}
+.poke-table{ border: 1px solid #2e8b57;}
 
-.mark{ display: block;}
+.mark{ display: block; line-height: 2}
 .mark-important{ color: red;}
 
-table td {padding: 0 0 0 1em}
 

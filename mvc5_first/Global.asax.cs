@@ -20,7 +20,7 @@ namespace mvc5_first
 
         //protected void Application_BeginRequest(object sender, EventArgs e)
         //{
-        //    if (Context.Request.FilePath == "/Utility/") Context.RewritePath("/Utility/Poke");
+        //    if (Context.Request.FilePath == "/") Context.RewritePath("/Poke");
         //}
     }
 }

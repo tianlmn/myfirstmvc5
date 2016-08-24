@@ -18,67 +18,72 @@
                 <span class="mark">a,b:普,火,水,电,草,冰,斗,毒,地,飞,超,虫,岩,鬼,龙,钢,恶,仙</span>
                 <span class="mark">c:1,2,3,4,5,6</span>
                 <span class="mark">在地址栏中输入查询，例如：</span>
-                <span class="mark mark-important">www.mustgrip.com/Utility/Poke?a=水&b=地&c=3</span>
+                <span class="mark mark-important">www.mustgrip.com/Poke?a=水&b=地&c=3</span>
                 <span class="mark">参数a，b表示精灵的两个特性，如果是单属性精灵可以只需要输入a，默认计算地属性</span>
                 <span class="mark">参数c表示计算几种攻击属性组合，默认为3</span>
                 <br />
                 <span class="mark">计算规则：对每个的防御属性，在c种攻击属性中取不小于2的最大伤害倍率，分别计算完18个倍率后相加，按照结果的最大值获取前40的攻击属性组合</span>
                 <span class="mark">本属性加成倍率1.5，攻击属性相克倍率为2，防御属性相克为0.5，免疫为0</span>
             </div>
-            <img src="Content/resource/xiangke.png" alt="HelloPokemon" title="HelloPokemon" class="img-responsive center-block" />
+            <img src="Content/resource/xiangke.png" alt="HelloPokemon" title="HelloPokemon" class="img-responsive" />
 
         </div>
-        <div class="col-md-6 content col-sm-12">
-            @using mvc5_first.Models
-            @model PokeEntity
-            <table>
-                <tr>
-                    <th>技能组合</th>
-                    <th>得分</th>
-                    <th>无力属性[0,1]</th>
-                    <th>一般属性[1.5,1.5]</th>
-                    <th>优势属性[2,3]</th>
-                </tr>
-                @if (Model != null && Model.SortedList != null)
-                {
-                    foreach (var item in Model.SortedList)
-                    {
+        <div class="col-md-7 poke-table col-sm-12">
+            <div class="row">
+                @using mvc5_first.Models
+                @model PokeEntity
+                <table class="table table-hover table-striped">
+                    <thead>
                         <tr>
-
-
-                            <td>
-                                @foreach (PokeAttrType i in item.SortList)
-                                {
-                                    @i.ToString()
-                                }
-                            </td>
-
-                            <td>
-                                @item.Score
-                            </td>
-                            <td>
-                                @foreach (PokeAttrType i in item.List_100)
-                                {
-                                    @i.ToString()
-                                }
-                            </td>
-                            <td>
-                                @foreach (PokeAttrType i in item.List_150)
-                                {
-                                    @i.ToString()
-                                }
-                            </td>
-                            <td>
-                                @foreach (PokeAttrType i in item.List_300)
-                                {
-                                    @i.ToString()
-                                }
-                            </td>
+                            <th class="col-xs-3">技能组合</th>
+                            <th class="col-xs-1">得分</th>
+                            <th class="col-xs-2">无力属性[0,1]</th>
+                            <th class="col-xs-3">一般属性[1.5,1.5]</th>
+                            <th class="col-xs-3">优势属性[2,3]</th>
                         </tr>
-                    }
-                }
-            </table>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.SortedList != null)
+                        {
+                            foreach (var item in Model.SortedList)
+                            {
+                                <tr>
 
+
+                                    <td>
+                                        @foreach (PokeAttrType i in item.SortList)
+                                        {
+                                            @i.ToString()
+                                        }
+                                    </td>
+
+                                    <td>
+                                        @item.Score
+                                    </td>
+                                    <td>
+                                        @foreach (PokeAttrType i in item.List_100)
+                                        {
+                                            @i.ToString()
+                                        }
+                                    </td>
+                                    <td>
+                                        @foreach (PokeAttrType i in item.List_150)
+                                        {
+                                            @i.ToString()
+                                        }
+                                    </td>
+                                    <td>
+                                        @foreach (PokeAttrType i in item.List_300)
+                                        {
+                                            @i.ToString()
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
