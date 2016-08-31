@@ -61,7 +61,7 @@ namespace mvc5_first.Controllers
             List<PokeAttrType[]> combList = CombAlgorithm<PokeAttrType>.GetCombination(attrList, CombNum);
 
             combList.Sort(CompareByPokeAttack);
-            var temp = combList.GetRange(0, 40);
+            var temp = combList.GetRange(0, 100);
             pokeEntity.SortedList = new List<PokeCombEntity>();
 
             foreach (var skills in temp)
