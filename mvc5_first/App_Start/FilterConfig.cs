@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 using System.Web.Mvc;
 
 namespace mvc5_first
@@ -8,6 +9,8 @@ namespace mvc5_first
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            
+            //filters.Add(new AuthorizeAttribute());
         }
     }
 }

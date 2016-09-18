@@ -1,0 +1,24 @@
+﻿@using System.Web.Mvc.Html
+@using mvc5_first.ViewModels
+@model PokemonListViewModel
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@section TitleSection{
+    MyView
+}
+@section ContentBody{
+    @{
+        Html.RenderAction("GetAddNewLink");
+    }
+
+    @foreach (PokemonViewModel pokemon in Model.PokemonList)
+    {
+        <div>
+            @pokemon.PokemonId @pokemon.PokemonName
+
+        </div>
+    }
+}
+

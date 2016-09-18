@@ -1,0 +1,18 @@
+﻿@model mvc5_first.ViewModels.FileUploadViewModel
+
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@section TitleSection{
+    批量上传文件
+}
+@section ContentBody{
+    <div>
+        <a href="/Poke/Index">Back</a>
+        <form action="/BulkUpload/Upload" method="post" enctype="multipart/form-data">
+            Select File <input type="file" name="fileUpload" value="" />
+            <input type="submit" name="name" value="Upload" />
+        </form>
+    </div>
+}
