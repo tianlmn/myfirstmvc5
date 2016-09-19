@@ -5,6 +5,7 @@
 *.rar
 *.zip
 *.exe
+*.dll
 
 # Folders
 obj
