@@ -1,0 +1,20 @@
+﻿@using mvc5_first.ViewModels
+@model BaseViewModel
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@section TitleSection{
+    新增口袋妖怪界面
+}
+
+@section ContentBody{
+    <form action="/Poke/SavePokemon" method="post">
+        PokemonNo: <input type="text" id="txtPNo" name="PokemonNo" value="" /><br />
+        PokemonName: <input type="text" id="txtPName" name="PokemonName" value="" /><br />
+        PokemonAttr_1: <input type="text" id="txtPA1" name="PokemonAttr_1" value="" /><br />
+        PokemonAttr_2: <input type="text" id="txtPA2" name="PokemonAttr_2" value="" />
+        <input type="submit" name="BtnSave" value="SavePoke" />
+        <input type="button" name="BtnReset" value="Reset" />
+    </form>
+}
