@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using mvc5_first.Models;
+using BusinessEntities;
+using BusinessLayer;
 
 namespace mvc5_first.Controllers
 {

@@ -121,28 +121,16 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Common\CombAlgorithm.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\BulkUploadController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\PokeController.cs" />
-    <Compile Include="Controllers\PokemonBusinessLayer.cs" />
-    <Compile Include="Data Access Layer\PokemonDal.cs" />
     <Compile Include="Filter\AdminFilter.cs" />
     <Compile Include="Filter\HeaderFooterFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\PokeCombEntity.cs" />
-    <Compile Include="Models\PokemonEntity.cs" />
-    <Compile Include="Models\UserDetails.cs" />
-    <Compile Include="Models\UserStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\ErrorViewModel.cs" />
-    <Compile Include="ViewModels\FileUploadViewModel.cs" />
-    <Compile Include="ViewModels\FooterViewModel.cs" />
-    <Compile Include="ViewModels\PokemonViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\app.css" />
@@ -186,7 +174,20 @@
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessEntities\BusinessEntities.csproj">
+      <Project>{ee9cd700-62b4-43dc-9d46-ebc2aca96c76}</Project>
+      <Name>BusinessEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
+      <Project>{e6145e57-87ad-465b-8cc7-8df1af6f8e5d}</Project>
+      <Name>BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViewModel\ViewModel.csproj">
+      <Project>{bc4dea4d-c43f-4ffe-87d3-673abb73e307}</Project>
+      <Name>ViewModel</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using mvc5_first.ViewModels;
+using ViewModel;
 
 namespace mvc5_first.Filter
 {

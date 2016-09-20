@@ -4,10 +4,10 @@ using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using mvc5_first.Common;
+using BusinessEntities;
+using BusinessLayer;
 using mvc5_first.Filter;
-using mvc5_first.Models;
-using mvc5_first.ViewModels;
+using ViewModel;
 
 namespace mvc5_first.Controllers
 {
@@ -47,7 +47,17 @@ namespace mvc5_first.Controllers
         public ActionResult GetView()
         {
             var pokeBal = new PokemonBusinessLayer();
-            var pokelistViewModel = pokeBal.GetView();
+            var pokemons = pokeBal.GetPokemonEntityList();
+            var pokelistViewModel = new PokemonListViewModel();
+
+            foreach (PokemonEntity pokemon in pokemons)
+            {
+                pokelistViewModel.PokemonList.Add(new PokemonViewModel()
+                {
+                    PokemonId = pokemon.PokemonNo,
+                    PokemonName = pokemon.PokemonName
+                });
+            }
 
             return View("MyView", pokelistViewModel);
         }

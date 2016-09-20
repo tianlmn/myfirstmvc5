@@ -6,9 +6,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using BusinessEntities;
+using BusinessLayer;
 using mvc5_first.Filter;
-using mvc5_first.Models;
-using mvc5_first.ViewModels;
+using ViewModel;
 
 namespace mvc5_first.Controllers
 {
