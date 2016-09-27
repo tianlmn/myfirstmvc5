@@ -49,6 +49,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseSettings.cs" />
+    <Compile Include="Migrations\201609251521379_Pokemon1.cs" />
+    <Compile Include="Migrations\201609251521379_Pokemon1.Designer.cs">
+      <DependentUpon>201609251521379_Pokemon1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PokemonDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -63,6 +68,11 @@
       <Project>{ee9cd700-62b4-43dc-9d46-ebc2aca96c76}</Project>
       <Name>BusinessEntities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201609251521379_Pokemon1.resx">
+      <DependentUpon>201609251521379_Pokemon1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

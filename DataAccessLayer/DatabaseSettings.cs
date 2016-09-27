@@ -6,7 +6,11 @@ namespace DataAccessLayer
     {
         public static void SetDatabase()
         {
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<PokemonDal>());
+            Database.SetInitializer(new CreateDatabaseIfNotExists<PokemonDal>());
+            using (var context = new PokemonDal())
+            {
+                context.Database.Initialize(true);
+            }
         }
     }
 }
