@@ -1,0 +1,47 @@
+﻿@using System.Web.Mvc.Html
+@using ViewModel.SPA
+@model PokemonListViewModel
+@{
+    Layout = "~/Areas/SPA/Views/Shared/MyLayout.cshtml";
+}
+
+@section TitleSection{
+    MyView
+}
+
+@section HeaderSection
+{
+    <script src="~/Scripts/jquery-1.12.4.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script>
+        function OpenAddNew() {
+            $.get("/SPA/Poke/CreatePokemon").then
+            (
+            function (r) {
+                $("<div id='DivCreateEmployee'></div>").html(r).
+                dialog({
+                    width: 'auto', height: 'auto', modal: true, title: "Create New Employee",
+                    close: function () {
+                        $('#DivCreateEmployee').remove();
+                    }
+                });
+            }
+        );
+        }
+    </script>
+}
+
+@section ContentBody{
+    @{
+        Html.RenderAction("GetAddNewLink");
+    }
+
+    @foreach (PokemonViewModel pokemon in Model.PokemonList)
+    {
+        <div>
+            @pokemon.PokemonId @pokemon.PokemonName
+
+        </div>
+    }
+}
+
